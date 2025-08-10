@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block content %}
+<h2>My Blog Posts</h2>
+<a href="{% url 'create_post' %}" class="btn btn-success mb-3"
+  >+ Create New Post</a
+>
+<ul class="list-group">
+  {% for post in posts %}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div>
+      <strong>{{ post.title }}</strong>
+      <small class="text-muted">({{ post.created_at|date:"M d, Y" }})</small>
+    </div>
+    <div>
+      <a
+        href="{% url 'post_update' post.id %}"
+        class="btn btn-sm btn-outline-secondary me-2"
+        >Edit</a
+      >
+      <form
+        method="post"
+        action="{% url 'post_delete' post.id %}"
+        class="d-inline"
+        onsubmit="return confirm('Delete this post?');"
+      >
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+      </form>
+    </div>
+  </li>
+  {% empty %}
+  <li class="list-group-item">You haven't written any posts yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
