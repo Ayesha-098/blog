@@ -23,9 +23,7 @@ class CreatePostView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        response = super().form_valid(form)
-        form.save_m2m()
-        return response
+        return super().form_valid(form)
 
 
 class UpdatePostView(LoginRequiredMixin, UpdateView):
