@@ -28,7 +28,7 @@ SECRET_KEY = "django-insecure-ni_qq-at455n@k(e&#_)z3%12l-thz8nvf6lb8skz)dod#f5-q
 DEBUG = True
 SITE_ID = 1
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["educationblog.up.railway.app"]
 AUTH_USER_MODEL = 'blog.User'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_EMAIL_REQUIRED = False
